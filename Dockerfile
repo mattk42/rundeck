@@ -26,7 +26,7 @@ RUN wget -O /var/lib/rundeck/libext/rundeck-s3-log-plugin-1.0.0.jar https://gith
 RUN mkdir -p /var/log/supervisor && mkdir -p /opt/supervisor
 RUN chmod u+x /opt/supervisor/rundeck
 
-EXPOSE 4440 4443
+EXPOSE 4440
 
 VOLUME  ["/etc/rundeck", "/var/rundeck", "/var/lib/rundeck", "/var/log/rundeck"]
 
