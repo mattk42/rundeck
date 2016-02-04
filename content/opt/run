@@ -17,8 +17,7 @@ chown -R rundeck:rundeck /opt/rundeck-defaults
 if [ ! -f "${initfile}" ]; then
    SERVER_URL=${SERVER_URL:-"https://0.0.0.0:4443"}
    DATABASE_URL=${DATABASE_URL:-""}
-   RUNDECK_PASSWORD=${RUNDECK_PASSWORD:-$(pwgen -s 15 1)}
-   DEBIAN_SYS_MAINT_PASSWORD=${DEBIAN_SYS_MAINT_PASSWORD:-$(pwgen -s 15 1)}
+   RUNDECK_PASSWORD=${RUNDECK_PASSWORD:-"rundeck"}
    
    echo "=>Initializing rundeck - This may take a few minutes"
    if [ ! -f /var/lib/rundeck/.ssh/id_rsa -a "{$RUNDECK_SSH_KEY}" == "{}" ]; then
