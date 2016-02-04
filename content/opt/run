@@ -48,13 +48,16 @@ if [ ! -f "${initfile}" ]; then
    echo "dataSource.username = rundeck" >> /etc/rundeck/rundeck-config.properties
    echo "dataSource.password = ${RUNDECK_PASSWORD}" >> /etc/rundeck/rundeck-config.properties
 
-echo -e "\n\n\n"
-echo "==================================================================="
-if [ -f /var/lib/rundeck/.ssh/id_rsa.pub ]; then echo "Rundeck public key:"; cat /var/lib/rundeck/.ssh/id_rsa.pub; fi
-echo "Server URL set to ${SERVER_URL}"
-echo "==================================================================="
+  echo "framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.bucket = ${RUNDECK_S3_BUCKET}" >> /etc/rundeck/framework.properties
+  echo "framework.plugin.ExecutionFileStorage.org.rundeck.amazon-s3.path = ${RUNDECK_S3_PATH}" >> /etc/rundeck/framework.properies
 
-touch ${initfile}
+  echo -e "\n\n\n"
+  echo "==================================================================="
+  if [ -f /var/lib/rundeck/.ssh/id_rsa.pub ]; then echo "Rundeck public key:"; cat /var/lib/rundeck/.ssh/id_rsa.pub; fi
+  echo "Server URL set to ${SERVER_URL}"
+  echo "==================================================================="
+
+  touch ${initfile}
 fi
 
 echo "Starting Supervisor.  You can safely CTRL-C and the container will continue to run with or without the -d (daemon) option"
